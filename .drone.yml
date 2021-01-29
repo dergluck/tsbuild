@@ -17,8 +17,26 @@ steps:
   - apt-get -y upgrade
   - apt-get -y install automake ca-certificates g++ git libtool libleptonica-dev make pkg-config
   - apt-get -y install --no-install-recommends asciidoc docbook-xsl xsltproc
-  - apt-get -y install libpango1.0-dev
+  - apt-get -y install libicu-dev libpango1.0-dev libcairo2-dev
   - cd tesseract
   - ./autogen.sh
-  - ./configure
+  - ./configure --prefix=./tes
   - make
+  - make install
+  - make training
+  - make training-install
+
+- name: docker
+  image: plugins/docker
+  settings: 
+    repo: registry.digitalocean.com/dergluck/tesseract
+    registry: registry.digitalocean.com
+    username:
+      from_secret: regauth
+    password:
+      from_secret: regauth
+    context: bin/
+  tags:
+    - latest
+depends_on:
+  - Build
