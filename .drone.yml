@@ -20,11 +20,12 @@ steps:
   - apt-get -y install libicu-dev libpango1.0-dev libcairo2-dev
   - cd tesseract
   - ./autogen.sh
-  - ./configure --prefix=$(pwd)/tes
+  - ./configure --prefix=$(dirname $(pwd))/tes
   - make
   - make install
   - make training
   - make training-install
+  - ls -lR $(dirname $(pwd))/tes
 
 - name: docker
   image: plugins/docker
