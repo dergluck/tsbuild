@@ -6,8 +6,8 @@ steps:
 - name: Clone
   image: ubuntu:latest
   commands:
-  - apt update
-  - apt install git
+  - apt-get update
+  - apt-get install git
   - git clone https://github.com/tesseract-ocr/tesseract.git
 - name: Build
   image: ubuntu:latest
