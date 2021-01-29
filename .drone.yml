@@ -36,7 +36,6 @@ steps:
       from_secret: regauth
     password:
       from_secret: regauth
-    context: tess/
   tags:
     - latest
   depends_on:
