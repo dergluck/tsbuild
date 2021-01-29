@@ -20,12 +20,12 @@ steps:
   - apt-get -y install libicu-dev libpango1.0-dev libcairo2-dev
   - cd tesseract
   - ./autogen.sh
-  - ./configure --prefix=$(dirname $(pwd))/tes
+  - ./configure --prefix=$(dirname $(pwd))/tess
   - make
   - make install
   - make training
   - make training-install
-  - ls -lR $(dirname $(pwd))/tes
+  - ls -lR $(dirname $(pwd))/tess
 
 - name: docker
   image: plugins/docker
@@ -36,7 +36,7 @@ steps:
       from_secret: regauth
     password:
       from_secret: regauth
-    context: bin/
+    context: tes/
   tags:
     - latest
   depends_on:
