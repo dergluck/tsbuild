@@ -1,0 +1,19 @@
+---
+kind: pipeline
+type: docker
+name: build-cd
+steps:
+- name: Clone
+  image: ubuntu:latest
+  commands:
+  - git clone https://github.com/tesseract-ocr/tesseract.git
+- name: Build
+  image: ubuntu:latest
+  commands:
+  - apt install automake ca-certificates g++ git libtool libleptonica-dev make pkg-config
+  - apt install --no-install-recommends asciidoc docbook-xsl xsltproc
+  - apt install install libpango1.0-dev
+  - cd tesseract
+  - ./autogen.sh
+  - ./configure
+  - make
