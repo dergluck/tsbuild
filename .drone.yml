@@ -38,5 +38,5 @@ steps:
     context: bin/
   tags:
     - latest
-depends_on:
-  - Build
+  depends_on:
+    - Build
