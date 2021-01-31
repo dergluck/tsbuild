@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 RUN  export DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
-    && apt-get upgrade \
+    && apt-get -y upgrade \
     && apt-get -y install automake ca-certificates g++ git libtool libleptonica-dev make pkg-config  
 RUN apt-get -y install --no-install-recommends asciidoc docbook-xsl xsltproc 
 RUN pt-get -y install libicu-dev libpango1.0-dev libcairo2-dev
