@@ -1,10 +1,10 @@
 FROM ubuntu:latest
-CMD  export DEBIAN_FRONTEND=noninteractive \
+RUN  export DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
     && apt-get upgrade \
-    && apt-get -y install automake ca-certificates g++ git libtool libleptonica-dev make pkg-config  \
-    &&  apt-get -y install --no-install-recommends asciidoc docbook-xsl xsltproc \
-    && apt-get -y install libicu-dev libpango1.0-dev libcairo2-dev
+    && apt-get -y install automake ca-certificates g++ git libtool libleptonica-dev make pkg-config  
+RUN apt-get -y install --no-install-recommends asciidoc docbook-xsl xsltproc 
+RUN pt-get -y install libicu-dev libpango1.0-dev libcairo2-dev
 
 COPY tess/ /tess/
 COPY scripts/ /home/scripts
