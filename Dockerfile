@@ -10,11 +10,12 @@ COPY tess/ /tess/
 COPY tess.conf /etc/ld.so.conf.d/tess.conf
 RUN /sbin/ldconfig
 
+ENV TESSDATA_PREFIX /tess/share/tessdata
 COPY scripts/ /home/scripts
 ENV SCRIPTS_DIR /home/scripts
 RUN ${SCRIPTS_DIR}/tessdata_download.sh
 
-ENV TESSDATA_PREFIX /tess/share/tessdata
+
 ENV PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tess/bin
 
 WORKDIR /home
