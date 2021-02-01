@@ -10,4 +10,4 @@ wget -O ${TESSDATA_PREFIX}/equ.traineddata https://github.com/tesseract-ocr/tess
 wget -O ${TESSDATA_PREFIX}/eng.traineddata https://github.com/tesseract-ocr/tessdata/raw/4.00/eng.traineddata
 # other languages: https://github.com/tesseract-ocr/tesseract/wiki/Data-Files
 # rus Russian
-wget -O ${TESSDATA_PREFIX}/eng.traineddata https://github.com/tesseract-ocr/tessdata/raw/4.00/rus.traineddata
+wget -O ${TESSDATA_PREFIX}/rus.traineddata https://github.com/tesseract-ocr/tessdata/raw/4.00/rus.traineddata
