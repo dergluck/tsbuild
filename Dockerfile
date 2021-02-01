@@ -7,13 +7,15 @@ RUN apt-get -y install --no-install-recommends asciidoc docbook-xsl xsltproc
 RUN apt-get -y install libicu-dev libpango1.0-dev libcairo2-dev
 
 COPY tess/ /tess/
-COPY scripts/ /home/scripts
+COPY tess.conf /etc/ld.so.conf.d/tess.conf
+RUN /sbin/ldconfig
 
+COPY scripts/ /home/scripts
 ENV SCRIPTS_DIR /home/scripts
-RUN /sbin/ldconfig && ${SCRIPTS_DIR}/tessdata_download.sh
+RUN ${SCRIPTS_DIR}/tessdata_download.sh
 
 ENV TESSDATA_PREFIX /tess/share/tessdata
-ENV PATH=/bin:/usr/bin:/tess/bin
-COPY tess.conf /etc/ld.so.conf.d/tess.conf
+ENV PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tess/bin
+
 WORKDIR /home
 ENTRYPOINT [ "/tess/bin/tesseract" ]
