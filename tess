@@ -1,0 +1,4 @@
+#!/bin/bash
+
+set -x
+docker run -v `pwd`:/res tesseract $@

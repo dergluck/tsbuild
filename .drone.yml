@@ -26,6 +26,9 @@ steps:
   - make training
   - make training-install
   - ls -lR $(dirname $(pwd))/tess
+  when:
+    ref:
+      - refs/tags/release
 
 - name: docker
   image: plugins/docker
@@ -40,3 +43,6 @@ steps:
     - latest
   depends_on:
     - Build
+  when:
+    ref:
+      - refs/tags/release
